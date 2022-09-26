@@ -47,7 +47,7 @@
   white-space: nowrap;
   overflow: hidden;
 }
-.profile__edit {
+.profile__edit-button {
   background-image: url(../images/Vector.svg);
   background-position: center;
   background-repeat: no-repeat;
@@ -60,7 +60,7 @@
   
 }
 
-.profile__edit:hover {
+.profile__edit-button:hover {
   opacity: 0.6;
   cursor: pointer;
   

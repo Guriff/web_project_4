@@ -31,24 +31,24 @@
           />
           <div class="profile__description">
             <div class="profile__description-title">
-              <h1 class="profile__title">Jacques Cousteau</h1>
+              <h1 class="profile__title profile__title_value_name">Jacques Cousteau</h1>
               <button
-                class="profile__edit"
+                class="profile__edit-button"
                 type="button"
                 aria-label="Edit"
               ></button>
             </div>
 
-            <p class="profile__subtitle">Explorer</p>
+            <p class="profile__subtitle profile__subtitle_value_title">Explorer</p>
           </div>
           <button class="profile__button" type="button" aria-label="Add">
             <img src="./images/plus.svg" alt="plus-sign" />
           </button>
         </section>
 
-        <div class="popup">
+        <div class="popup popup_type_profile">
           <div class="popup__content">
-            <form>
+            <form class="popup__form popup__form_type_profile">
               <button class="popup__close">Close</button>
               <h3>Edit profile</h3>
               <label class="popup__label">Name:</label>
@@ -176,5 +176,6 @@
         <p class="footer__copywrite">© 2022 Around The U.S.</p>
       </footer>
     </div>
+    <script src="./index.js"></script>
   </body>
 </html>

@@ -9,7 +9,15 @@
     justify-content: center;
     align-items: center;
     color: black;
+    transition: opacity .6s;
+    opacity: 0;
+    visibility: hidden;
 
+}
+
+.popup_opened{
+    opacity: 1;
+    visibility: visible;
 }
 
 .popup__content{
