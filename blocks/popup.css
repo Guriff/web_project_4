@@ -90,7 +90,7 @@
   cursor: pointer;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 550px) {
   .popup {
     min-width: 282px;
     padding:10px;
