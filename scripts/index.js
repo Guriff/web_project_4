@@ -6,8 +6,8 @@ const profileFormElement = document.querySelector(".popup__form_type_profile");
 const nameInput = document.querySelector(".popup__input_type_name");
 const titleInput = document.querySelector(".popup__input_type_title");
 
-const profileName = document.querySelector(".profile__title_value_name");
-const profileTitle = document.querySelector(".profile__subtitle_value_title");
+const profileName = document.querySelector(".profile__title");
+const profileTitle = document.querySelector(".profile__subtitle");
 
 function closePopup(popup) {
   popup.classList.remove("popup_opened");

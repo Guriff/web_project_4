@@ -31,7 +31,7 @@
           />
           <div class="profile__description">
             <div class="profile__description-title">
-              <h1 class="profile__title profile__title_value_name">Jacques Cousteau</h1>
+              <h1 class="profile__title">Jacques Cousteau</h1>
               <button
                 class="profile__edit-button"
                 type="button"
@@ -39,7 +39,7 @@
               ></button>
             </div>
 
-            <p class="profile__subtitle profile__subtitle_value_title">Explorer</p>
+            <p class="profile__subtitle">Explorer</p>
           </div>
           <button class="profile__button" type="button" aria-label="Add">
             <img src="./images/plus.svg" alt="plus-sign" />
@@ -48,15 +48,28 @@
 
         <div class="popup popup_type_profile">
           <div class="popup__content">
-            <form class="popup__form popup__form_type_profile">
-              <button class="popup__close">
-                <img src="./images/Close-Icon.svg" alt="Close button" width="26" height="26" aria-label="Close"/>
+            <form class="popup__form popup__form_type_profile" name="">
+              <button type="button" class="popup__close">
+                <img
+                  src="./images/Close-Icon.svg"
+                  alt="Close button"
+                  class="close__button-img"
+                  aria-label="Close"
+                />
               </button>
-              <h3 class="popup__form_title">Edit profile</h3>
-              <label class="popup__label"></label>
-              <input class="popup__input popup__input_type_name" placeholder="Name"/>
-              <label class="popup__label"></label>
-              <input class="popup__input popup__input_type_title" placeholder="About me"/>
+              <h3 class="popup__form-title">Edit profile</h3>
+
+              <input
+                class="popup__input popup__input_type_name"
+                placeholder="Name"
+                name=""
+              />
+
+              <input
+                class="popup__input popup__input_type_title"
+                placeholder="About me"
+                name=""
+              />
               <button type="submit" class="popup__submit-btn">Save</button>
             </form>
           </div>
