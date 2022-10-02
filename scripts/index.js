@@ -14,18 +14,17 @@ function closePopup(popup) {
 }
 
 function openPopup(popup) {
-  nameInput.value = profileName.textContent;
-  titleInput.value = profileTitle.textContent;
   popup.classList.add("popup_opened");
 }
 
 profileEditButton.addEventListener("click", function () {
- 
+  nameInput.value = profileName.textContent;
+  titleInput.value = profileTitle.textContent;
 
   openPopup(profilePopup);
 });
 
-profilePopup.addEventListener("click", function openPopup (event) {
+profilePopup.addEventListener("click", function (event) {
   if (
     
     event.target.classList.contains("popup__close")
