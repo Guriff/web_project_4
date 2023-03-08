@@ -46,150 +46,71 @@
           </button>
         </section>
 
-        <div class="popup popup_type_profile">
-          <div class="popup__content">
-            <form class="popup__form popup__form_type_profile" name="form">
-              <button class="popup__close" type="submit" aria-label="Close">
-                <img
-                  src="./images/Close-Icon.svg"
-                  alt="Close button"
-                  class="close__button-img"
-                  aria-label="Close"
-                />
-              </button>
-              <h3 class="popup__form-title">Edit profile</h3>
+        
 
-              <input
-                class="popup__input popup__input_type_name"
-                placeholder="Name"
-                name="name"
-              />
+        <section>
+          <ul class="cards">
 
-              <input
-                class="popup__input popup__input_type_title"
-                placeholder="About me"
-                name="title"
-              />
-              <button type="submit" class="popup__submit-btn">Save</button>
-            </form>
-          </div>
-        </div>
+          </ul>
 
-        <section class="cards">
-          <article class="cards__content">
-            <img
-              class="cards__card"
-              src="./images/yosemite-valley.jpg"
-              alt="Yosemite Valley"
-            />
-            <div class="cards__footer">
-              <h2 class="cards__title">Yosmite Valley</h2>
-              <button class="heart" type="button">
-                <img
-                  class="heart__image"
-                  src="./images/heart.svg"
-                  alt="like-button"
-                  aria-label="like"
-                />
-              </button>
-            </div>
-          </article>
-
-          <article class="cards__content">
-            <img
-              class="cards__card"
-              src="./images/lake-louise.png"
-              alt="lake-louise"
-            />
-            <div class="cards__footer">
-              <h2 class="cards__title">Lake Louise</h2>
-              <button class="heart" type="button">
-                <img
-                  class="heart__image"
-                  src="./images/heart.svg"
-                  alt="like-button"
-                  aria-label="like"
-                />
-              </button>
-            </div>
-          </article>
-
-          <article class="cards__content">
-            <img
-              class="cards__card"
-              src="./images/bald-mountains.png"
-              alt="bald-mountains"
-            />
-            <div class="cards__footer">
-              <h2 class="cards__title">Bald mountains</h2>
-              <button class="heart" type="button">
-                <img
-                  class="heart__image"
-                  src="./images/heart.svg"
-                  alt="like-button"
-                  aria-label="like"
-                />
-              </button>
-            </div>
-          </article>
-
-          <article class="cards__content">
-            <img class="cards__card" src="./images/latemar.png" alt="latemar" />
-            <div class="cards__footer">
-              <h2 class="cards__title">Latemar</h2>
-              <button class="heart" type="button">
-                <img
-                  class="heart__image"
-                  src="./images/heart.svg"
-                  alt="like-button"
-                  aria-label="like"
-                />
-              </button>
-            </div>
-          </article>
-
-          <article class="cards__content">
-            <img
-              class="cards__card"
-              src="./images/vanoise-national-park.png"
-              alt="vanoise-national-park"
-            />
-            <div class="cards__footer">
-              <h2 class="cards__title">Vanoise National Park</h2>
-              <button class="heart" type="button">
-                <img
-                  class="heart__image"
-                  src="./images/heart.svg"
-                  alt="like-button"
-                  aria-label="like"
-                />
-              </button>
-            </div>
-          </article>
-
-          <article class="cards__content">
-            <img
-              class="cards__card"
-              src="./images/lago-di-braies.png"
-              alt="lago-di-braies"
-            />
-            <div class="cards__footer">
-              <h2 class="cards__title">Lago di Braies</h2>
-              <button class="heart" type="button">
-                <img
-                  class="heart__image"
-                  src="./images/heart.svg"
-                  alt="like-button"
-                  aria-label="like"
-                />
-              </button>
-            </div>
-          </article>
         </section>
+
       </main>
       <footer class="footer">
         <p class="footer__copywrite">© 2022 Around The U.S.</p>
       </footer>
+      <div class="popup popup_type_profile">
+        <div class="popup__content">
+          <form class="popup__form popup__form_type_profile" name="form">
+            <button class="popup__close" type="submit" aria-label="Close">
+              <img
+                src="./images/Close-Icon.svg"
+                alt="Close button"
+                class="close__button-img"
+                aria-label="Close"
+              />
+            </button>
+            <h3 class="popup__form-title">Edit profile</h3>
+
+            <input
+              class="popup__input popup__input_type_name"
+              placeholder="Name"
+              name="name"
+            />
+
+            <input
+              class="popup__input popup__input_type_title"
+              placeholder="About me"
+              name="title"
+            />
+            <button type="submit" class="popup__submit-btn">Save</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="popup popup_type_add">
+        <div class="popup_content_add">
+          <form class="popup__form popup_type_add" name="form">
+       
+            <h3 class="popup__form-title">Add</h3>
+          </form>
+        </div>
+
+
+      </div>
+
+      <template class="card-template">
+        <li class="cards__card">
+          <button type="button" class="card__delete-button" aria-label="Delete"></button>
+          <img src="#" alt="" class="">
+          <div class="cards__footer">
+            <h2 class="cards__title"></h2>
+            <div class="heart">
+            <button type="button" class="card__like-button" aria-label="Like"></button>
+            </div>
+          </div>
+        </li>
+      </template>
     </div>
     <script src="./scripts/index.js"></script>
   </body>
