@@ -59,9 +59,9 @@
       <footer class="footer">
         <p class="footer__copywrite">© 2022 Around The U.S.</p>
       </footer>
-      <div class="popup popup_type_profile">
+      <div class="popup" id="edit-profile-popup">
         <div class="popup__content">
-          <form class="popup__form popup__form_type_profile" name="form">
+          <form class="popup__form" name="edit-profile">
             <button class="popup__close" type="submit" aria-label="Close">
               <img
                 src="./images/Close-Icon.svg"
@@ -85,8 +85,49 @@
             />
             <button type="submit" class="popup__submit-btn">Save</button>
           </form>
+
+          
+          
         </div>
       </div>
+
+      <div class="popup" id="add-card-popup">
+        <div class="popup__content">
+          <form class="popup__form" name="add-card">
+            <button class="popup__close" type="submit" aria-label="Close">
+              <img
+                src="./images/Close-Icon.svg"
+                alt="Close button"
+                class="close__button-img"
+                aria-label="Close"
+              />
+            </button>
+            <h3 class="popup__form-title">New place</h3>
+
+            <input
+            type="text"
+            name="url"
+              class="popup__input"
+              placeholder="URL"
+              
+            />
+
+            <input
+            type="text"
+            name="title"
+              class="popup__input"
+              placeholder="Title"
+              
+            />
+            <button type="submit" class="button popup__button">Create</button>
+          </form>
+
+          
+          
+        </div>
+      </div>
+
+      
 
 
 
