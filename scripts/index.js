@@ -15,30 +15,47 @@ const profileTitle = document.querySelector(".profile__subtitle");
 
 
 const cardTemplate = document.querySelector("#card-template");
-
+const card = cardTemplate.content.querySelector(".card").cloneNode(true);
 const cardList = document.querySelector(".cards");
 
 
 function createCard(data) {
-  const card = cardTemplate.querySelector(".card");
+
   const imageElement = card.querySelector(".card__image");
   const titleElement = card.querySelector(".card__title");
 
-  imageElement.src = data.url;
+  imageElement.src = data.url
   titleElement.textContent = data.title;
   return card;
   
 };
 
 function addCardToPage(card){
-cardList.prepend(card);
-}
+  cardList.prepend(card);
+  }
 
-addCardToPage(createCard({
-  url:"https://unsplash.com/photos/Ete0zMKPWys",
-  title:"splash",
+  addCardToPage(createCard({
+    url:"https://images.unsplash.com/photo-1678308860535-210ff0f57af6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw0fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=400&q=60",
+    title:"splash",
+  
+  }));
+  addCardToPage(createCard({
+    url:"https://images.unsplash.com/photo-1678308860535-210ff0f57af6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw0fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=400&q=60",
+    title:"splash",
+  
+  }));
+  addCardToPage(createCard({
+    url:"https://images.unsplash.com/photo-1678308860535-210ff0f57af6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw0fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=400&q=60",
+    title:"splash",
+  
+  }));
+  addCardToPage(createCard({
+    url:"https://images.unsplash.com/photo-1678308860535-210ff0f57af6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw0fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=400&q=60",
+    title:"splash",
+  
+  }));
+  
 
-}));
 
 
 
