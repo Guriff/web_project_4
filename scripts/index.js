@@ -1,7 +1,7 @@
 const profileEditButton = document.querySelector(".profile__edit-button");
 const profileAddbutton = document.querySelector(".profile__button");
 const profilePopup = document.querySelector(".popup_type_profile");
-const addPopup = document.querySelector("popup_type_add");
+const addPopup = document.querySelector(".popup_type_add");
 
 const profileFormElement = document.querySelector(".popup__form_type_profile");
 const addFormElement = document.querySelector("popup__form_type_add");
@@ -11,32 +11,37 @@ const titleInput = document.querySelector(".popup__input_type_title");
 
 const profileName = document.querySelector(".profile__title");
 const profileTitle = document.querySelector(".profile__subtitle");
-const initialCards = [
-  {
-    name: "Yosemite Valley",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_yosemite.jpg"
-  },
-  {
-    name: "Lake Louise",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_lake-louise.jpg"
-  },
-  {
-    name: "Bald Mountains",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_bald-mountains.jpg"
-  },
-  {
-    name: "Latemar",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_latemar.jpg"
-  },
-  {
-    name: "Vanoise National Park",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_vanoise.jpg"
-  },
-  {
-    name: "Lago di Braies",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_lago.jpg"
-  }
-];
+
+const cardTemplate = document.querySelector("#card-template");
+const cardList = document.querySelector(".cards__card");
+
+
+function createCard(data) {
+  const card = cardTemplate.content.querySelector(".card").cloneNode();
+  const imageElement = card.querySelector(".card__image");
+  const titleElement = card.querySelector(".card__title");
+
+  imageElement.src = data.url;
+  titleElement.textContent = data.title;
+  return card;
+  
+};
+
+function addCardToPage(card){
+cardList.prepend(card);
+}
+
+addCardToPage(createCard({
+  url:"https://unsplash.com/photos/Ete0zMKPWys",
+  title:"splash",
+
+}));
+
+
+
+
+
+
 
 function closePopup(popup) {
   popup.classList.remove("popup_opened");
