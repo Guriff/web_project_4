@@ -4,7 +4,7 @@ const profilePopup = document.querySelector(".popup_type_profile");
 const addPopup = document.querySelector(".popup_type_add");
 
 const profileFormElement = document.querySelector(".popup__form_type_profile");
-const addFormElement = document.querySelector("popup__form_type_add");
+const addFormElement = document.querySelector(".popup__form_type_add");
 
 const nameInput = document.querySelector(".popup__input_type_name");
 const titleInput = document.querySelector(".popup__input_type_title");
@@ -12,12 +12,15 @@ const titleInput = document.querySelector(".popup__input_type_title");
 const profileName = document.querySelector(".profile__title");
 const profileTitle = document.querySelector(".profile__subtitle");
 
+
+
 const cardTemplate = document.querySelector("#card-template");
-const cardList = document.querySelector(".cards__card");
+
+const cardList = document.querySelector(".cards");
 
 
 function createCard(data) {
-  const card = cardTemplate.content.querySelector(".card").cloneNode();
+  const card = cardTemplate.querySelector(".card");
   const imageElement = card.querySelector(".card__image");
   const titleElement = card.querySelector(".card__title");
 
@@ -36,8 +39,6 @@ addCardToPage(createCard({
   title:"splash",
 
 }));
-
-
 
 
 
