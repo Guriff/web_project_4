@@ -66,7 +66,7 @@
   
   
 }
-.profile__button {
+.profile__button_add {
   width: 150px;
   height: 50px;
   flex-shrink: 0;
@@ -82,7 +82,7 @@
   border-radius: 2px;
 }
 
-.profile__button:hover {
+.profile__button_add:hover {
   opacity: 0.6;
   cursor: pointer;
 }
@@ -100,7 +100,7 @@
     margin-bottom: 36px;
     max-width: 250px;
   }
-  .profile__button {
+  .profile__button_add {
     width: 100%;
     margin: 0;
   }

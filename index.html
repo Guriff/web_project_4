@@ -41,7 +41,7 @@
 
             <p class="profile__subtitle">Explorer</p>
           </div>
-          <button class="profile__button" type="button" aria-label="Add">
+          <button class="profile__button_add" type="button" aria-label="Add">
             <img src="./images/plus.svg" alt="plus-sign" />
           </button>
         </section>
@@ -71,6 +71,25 @@
                 name="title"
               />
               <button type="submit" class="popup__submit-btn">Save</button>
+            </form>
+          </div>
+        </div>
+
+        <div class="popup popup_type_add">
+          <div class="popup__content">
+            <form class="popup__form popup__form_type_add" name="form">
+              <button class="popup__close" type="submit" aria-label="Close">
+                <img
+                  src="./images/Close-Icon.svg"
+                  alt="Close button"
+                  class="close__button-img"
+                  aria-label="Close"
+                />
+              </button>
+              <h3 class="popup__form-title">New place</h3>
+
+
+              <button type="submit" class="popup__submit-btn">Add</button>
             </form>
           </div>
         </div>
