@@ -11,6 +11,7 @@
 .cards__card {
   max-width: 282px;
   max-height: 282px;
+  
 }
 
 .cards__content {
@@ -34,6 +35,11 @@
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
+}
+
+.cards__image{
+  width: 282px;
+  height: 282px;
 }
 
 @media screen and (max-width: 500px) {
