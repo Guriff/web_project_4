@@ -110,7 +110,6 @@ profileAddformElement.addEventListener("submit",handleProfileFormAddSubmit);
 
 
 const placesWrapper = document.querySelector(".cards__card");
-
 const cardTemplate = document.querySelector("#card-template").content.querySelector(".cards__content")
 
 
@@ -130,7 +129,7 @@ const getCardElement = (data) => {
 
 const renderCard = (data,wrap) => {
   const cardItem = getCardElement(data);
-  wrap.prepend(cardItem);
+  wrap.appendChild(cardItem);
 };
 
 initialCards.forEach((cardObject) => {

@@ -1,12 +1,13 @@
 
-.card__like-button{
-    background-color: rgba(0, 0, 0, 0);
-    margin-right: 30px;
-    border: none;
-    padding: 0;
-  }
-  .card__like-button:hover {
-    border: #000000;
-    opacity: 0.5;
-    cursor: pointer;
-  }
+.card__like-button {
+  background-color: rgba(0, 0, 0, 0);
+  margin-right: 30px;
+  border: none;
+  padding: 0;
+  background-image:url(../images/heart.svg);
+}
+.card__like-button_image:hover {
+  border: #000000;
+  opacity: 0.5;
+  cursor: pointer;
+}
