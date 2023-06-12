@@ -116,12 +116,18 @@ const cardTemplate = document.querySelector("#card-template").content.querySelec
 
 const getCardElement = (data) => {
   const cardElement = cardTemplate.cloneNode(true);
-  const deleteButton = cardElement.querySelector(".card__delete-button");
   const likeButton = cardElement.querySelector(".card__like-button");
   const imageElement = cardElement.querySelector(".cards__image");
   const cardTitle = cardElement.querySelector(".cards__title");
   imageElement.style.backgroundImage ="url(" + data.link + ")";
   cardTitle.innerHTML = data.name;
+
+ 
+  
+  likeButton.addEventListener("click", function () {
+    likeButton.classList.toggle("card__like-button_active");
+  });
+
   return cardElement;
 };
 
@@ -167,7 +173,8 @@ function deleteCard(cardElement) {
   }
 
   cardElement.remove();
-}
+};
+
 
 
 
