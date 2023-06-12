@@ -16,15 +16,19 @@
 }
 
 .cards__content {
+  position: relative;
   background-color: #fff;
   width: 282px;
   border-radius: 10px;
   overflow: hidden;
+  
 }
 
 .cards__footer {
   display: flex;
   color: #000;
+  max-width:265px;
+  
 }
 
 .cards__title {
@@ -36,6 +40,7 @@
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
+  
 }
 
 .cards__image{
@@ -47,6 +52,9 @@
   background-size: cover;
   
 }
+
+
+
 
 @media screen and (max-width: 500px) {
   .cards__card {

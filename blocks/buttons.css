@@ -1,0 +1,35 @@
+
+.card__like-button{
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    padding: 0;
+    
+  }
+  .card__like-button:hover {
+    border: #000000;
+    opacity: 0.5;
+    cursor: pointer;
+  }
+
+  .card__delete-button {
+    position: absolute;
+    background-color: fff;
+    top: 5px;
+    right: 5px;
+    padding: 0;
+    border:none;
+    
+    
+    
+
+
+  }
+
+  .card__delete-button:hover {
+      border: #000000;
+    opacity: 0.5;
+    cursor: pointer;
+
+
+  }
+

@@ -105,7 +105,7 @@
           />
 
           <input
-            class="popup__input popup__input_type_image"
+            class="popup__input popup__input_type_link"
             placeholder="Image URL"
             name="image url"
           />
@@ -119,11 +119,22 @@
 
     <template id="card-template">
       <li class="cards__content">
-      <div class="cards__image"></div>
-      <button type="button" class="card__delete-button"></button>
-      <button type="button" class="card__like-button"></button>
+      <div class="cards__image">
+         <button type="button" class="card__delete-button">
+          <img class="card__delete-button"
+           src="./images/Trash.svg"
+        alt="trash-button"
+      aria-label="trash" /></button>
+    </div>
       <div class="cards__footer">
-        <h2 class="cards__title"></h2>
+        <h2 class="cards__title">
+        </h2>
+        <button type="button" class="card__like-button">
+          <img class="card__like-button"
+          src="./images/heart.svg"
+          alt="like-button"
+          aria-label="like"/>
+        </button>
       </div>
     </li>
     </template> 
