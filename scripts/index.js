@@ -3,18 +3,17 @@ const profileAddButton = document.querySelector(".profile__button_add");
 
 const profilePopup = document.querySelector(".popup_type_profile");
 const profileAddPopup = document.querySelector(".popup_type_add");
+const picPopup = document.querySelector(".popup_type_pic");
+
 
 const profileFormElement = document.querySelector(".popup__form_type_profile");
-const profileAddformElement= document.querySelector(".popup__form_type_add");
+const profileAddFormElement= document.querySelector(".popup__form_type_add");
 
 
 const nameInput = document.querySelector(".popup__input_type_name");
 const titleInput = document.querySelector(".popup__input_type_title");
 const cardNameInput = document.querySelector(".popup__input_type_place");
 const cardLinkInput = document.querySelector(".popup__input_type_link");
-const addCardButton = profileAddPopup.querySelector(".popup__submit-btn");
-
-
 const profileName = document.querySelector(".profile__title");
 const profileTitle = document.querySelector(".profile__subtitle");
 
@@ -45,17 +44,11 @@ const initialCards = [
   }
 ];
 
-
-
-
-
-
-function closePopup(popup) {
-  popup.classList.remove("popup_opened");
-}
-
 function openPopup(popup) {
   popup.classList.add("popup_opened");
+}
+function closePopup(popup) {
+  popup.classList.remove("popup_opened");
 }
 
 profileEditButton.addEventListener("click", function () {
@@ -66,50 +59,32 @@ profileEditButton.addEventListener("click", function () {
 });
 
 profileAddButton.addEventListener("click", function () {
- 
-
   openPopup(profileAddPopup);
 });
 
-profilePopup.addEventListener("click", function (event) {
-  if (
-    
-    event.target.classList.contains("popup__close")
-  ) {
-    closePopup(profilePopup);
+document.addEventListener("click", function (event) {
+  if (event.target.classList.contains("popup__close")) {
+    const clickedPopup = event.target.closest(".popup");
+    if (clickedPopup) {
+      closePopup(clickedPopup);
+    }
   }
 });
-
-
-profileAddPopup.addEventListener("click", function (event) {
-  if (
-    
-    event.target.classList.contains("popup__close")
-  ) {
-    closePopup(profileAddPopup);
-  }
-});
-
 
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
-
   profileName.textContent = nameInput.value;
   profileTitle.textContent = titleInput.value;
-
   closePopup(profilePopup);
 }
 
 function handleProfileFormAddSubmit(evt) {
   evt.preventDefault();
-
- 
   closePopup(profileAddPopup);
 }
 
 profileFormElement.addEventListener("submit", handleProfileFormSubmit);
-profileAddformElement.addEventListener("submit",handleProfileFormAddSubmit);
-
+profileAddFormElement.addEventListener("submit",handleProfileFormAddSubmit);
 
 const placesWrapper = document.querySelector(".cards__card");
 const cardTemplate = document.querySelector("#card-template").content.querySelector(".cards__content")
@@ -117,15 +92,15 @@ const cardTemplate = document.querySelector("#card-template").content.querySelec
 const getCardElement = (data) => {
   const cardElement = cardTemplate.cloneNode(true);
   const likeButton = cardElement.querySelector(".card__like-button");
-  const imageElement = cardElement.querySelector(".cards__image");
+  const cardImages = cardElement.querySelector(".cards__image");
   const cardTitle = cardElement.querySelector(".cards__title");
-  imageElement.style.backgroundImage ="url(" + data.link + ")";
+  cardImages.style.backgroundImage ="url(" + data.link + ")";
   cardTitle.innerHTML = data.name;
 
- 
+
   
   likeButton.addEventListener("click", function () {
-    likeButton.classList.toggle("card__like-button_active");
+     likeButton.classList.toggle("card__like-button_active");
   });
 
   return cardElement;
@@ -154,6 +129,8 @@ const addCardToInitialCards = (name, link) => {
   renderCard(newCard, placesWrapper);
 };
 
+const addCardButton = profileAddPopup.querySelector(".popup__submit-btn");
+
 addCardButton.addEventListener("click", function () {
   const cardName = cardNameInput.value;
   const cardLink = cardLinkInput.value;
@@ -174,8 +151,5 @@ function deleteCard(cardElement) {
 
   cardElement.remove();
 };
-
-
-
 
 

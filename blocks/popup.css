@@ -95,6 +95,44 @@
   cursor: pointer;
 }
 
+.popup_type_card {
+  background-color: white;
+  color: black;
+  max-width: 300px;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.popup__card-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.popup__type_pic{
+  width: 75vw;
+  height: 75vh;
+}
+
+.popup__type_pic-title {
+  position: absolute;
+width: 240px;
+height: 12px;
+left: 40px;
+top: 445px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 12px;
+line-height: 15px;
+
+color: #FFFFFF;
+
+
+}
+
 @media screen and (max-width: 450px) {
   .popup {
     margin: auto;
@@ -133,3 +171,5 @@
     margin-top: 30px;
   }
 }
+
+

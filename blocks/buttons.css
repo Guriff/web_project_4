@@ -14,9 +14,11 @@
 
   .card__like-button_active{
     background-image: url("../images/Union.svg");
-    border: none;
-    padding: 0;
-    background-color: rgba(0, 0, 0, 0);
+    transition: opacity 0.3s;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding-top: 7px;
+
 
 
   }
