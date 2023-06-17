@@ -104,12 +104,31 @@ const getCardElement = (data) => {
      likeButton.classList.toggle("card__like-button_active");
   });
 
+  const deleteButton = cardElement.querySelector(".card__delete-button");
+  deleteButton.addEventListener("click", function (event) {
+    event.stopPropagation();
+    deleteCard(cardElement);
+  });
+
 
   cardImages.addEventListener('click', () =>
 openImagePopup(data.name, data.link));
 
   return cardElement;
 };
+
+function openImagePopup(title, imageUrl){
+  const picImage = document.querySelector(".popup__pic-image");
+  const popupPicTitle = document.querySelector(".popup__pic-title");
+  
+  popupPicTitle.textContent = title;
+  picImage.src =imageUrl;
+  
+  openPopup(picPopup);
+  
+  
+  
+  };
 
 const renderCard = (data,wrap) => {
   const cardItem = getCardElement(data);
@@ -158,17 +177,6 @@ function deleteCard(cardElement) {
 };
 
 
-function openImagePopup(title, imageUrl){
-const picImage = document.querySelector(".popup__pic-image");
-const popupPicTitle = document.querySelector(".popup__pic-title");
 
-popupPicTitle.textContent = title;
-picImage.src =imageUrl;
-
-openPopup(picPopup);
-
-
-
-};
 
 

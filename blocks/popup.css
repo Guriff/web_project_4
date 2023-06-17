@@ -109,20 +109,22 @@
 }
 
 .popup__pic-content {
-  padding: 36px;
-  width: 100%;
-  max-width: 75vw;
-  height: 75vh;
-  max-height: 75vh;
+  position: relative;
+  width: 816px;
+  height: 540px;
+  
   border-radius: 10px;
   position: relative;
   padding: 0;
 }
 
+
+
+
 .popup__pic-image {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
 }
 
 .popup__pic-title {
@@ -135,6 +137,15 @@
   color: #fff;
 }
 
+@media screen and (max-width: 500px) {
+  .popup__pic-content {
+    
+    max-width: calc(100% - 38px);
+   
+  }
+}
+
+
 @media screen and (max-width: 450px) {
   .popup {
     margin: auto;
@@ -145,6 +156,8 @@
     margin-right: 19px;
     padding: 25px;
   }
+
+
 
   .popup__close {
     right: 0px;
@@ -189,11 +202,4 @@
   }
 }
 
-@media screen and (max-width: 500px) {
-  .popup__pic-content {
-    width: 90vw;
-    height: 90vh;
-    max-width: 300px;
-    max-height: 300px;
-  }
-}
+
