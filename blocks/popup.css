@@ -28,7 +28,7 @@
   position: relative;
 }
 
-.popup__close {
+.popup__close-img {
   position: absolute;
   top: -45px;
   right: -45px;
@@ -43,7 +43,7 @@
   cursor: pointer;
 }
 
-.popup__close-button-img {
+.close__button-img {
   width: 40px;
   height: 40px;
 }
@@ -162,7 +162,7 @@
     top: -45px;
   }
 
-  .close-button__img {
+  .close__button-img {
     width: 26px;
     height: 26px;
   }
