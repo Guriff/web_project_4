@@ -6,6 +6,7 @@ const profileAddPopup = document.querySelector(".popup_type_add");
 const picPopup = document.querySelector(".popup_type_pic");
 
 
+
 const profileFormElement = document.querySelector(".popup__form_type_profile");
 const profileAddFormElement= document.querySelector(".popup__form_type_add");
 
@@ -16,6 +17,7 @@ const cardNameInput = document.querySelector(".popup__input_type_place");
 const cardLinkInput = document.querySelector(".popup__input_type_link");
 const profileName = document.querySelector(".profile__title");
 const profileTitle = document.querySelector(".profile__subtitle");
+
 
 const initialCards = [
   {
@@ -62,13 +64,12 @@ profileAddButton.addEventListener("click", function () {
   openPopup(profileAddPopup);
 });
 
-document.addEventListener("click", function (event) {
-  if (event.target.classList.contains("popup__close")) {
-    const clickedPopup = event.target.closest(".popup");
-    if (clickedPopup) {
-      closePopup(clickedPopup);
-    }
-  }
+
+
+const picCloseButton = document.querySelector(".popup_type_pic .popup__close");
+
+picCloseButton.addEventListener("click", function () {
+  closePopup(picPopup);
 });
 
 function handleProfileFormSubmit(evt) {
@@ -102,6 +103,10 @@ const getCardElement = (data) => {
   likeButton.addEventListener("click", function () {
      likeButton.classList.toggle("card__like-button_active");
   });
+
+
+  cardImages.addEventListener('click', () =>
+openImagePopup(data.name, data.link));
 
   return cardElement;
 };
@@ -150,6 +155,20 @@ function deleteCard(cardElement) {
   }
 
   cardElement.remove();
+};
+
+
+function openImagePopup(title, imageUrl){
+const picImage = document.querySelector(".popup__pic-image");
+const popupPicTitle = document.querySelector(".popup__pic-title");
+
+popupPicTitle.textContent = title;
+picImage.src =imageUrl;
+
+openPopup(picPopup);
+
+
+
 };
 
 
