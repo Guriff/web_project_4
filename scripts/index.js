@@ -45,6 +45,7 @@ const initialCards = [
 function openPopup(popup) {
   popup.classList.add("popup_opened");
 }
+
 function closePopup(popup) {
   popup.classList.remove("popup_opened");
 }
@@ -68,35 +69,57 @@ picCloseButton.addEventListener("click", function () {
 
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
+  
   profileName.textContent = nameInput.value;
   profileTitle.textContent = titleInput.value;
 
-  
   closePopup(profilePopup);
 }
 
 function handleProfileFormAddSubmit(evt) {
   evt.preventDefault();
 
-  profileAddFormElement.reset();
-  addCardButton.addEventListener("click", function () {
-    const cardName = cardNameInput.value;
-    const cardLink = cardLinkInput.value;
+  const cardName = cardNameInput.value;
+  const cardLink = cardLinkInput.value;
 
-    addCardToInitialCards(cardName, cardLink);
-    cardNameInput.value = "";
-    cardLinkInput.value = "";
-  });
+ 
   closePopup(profileAddPopup);
 }
 
 profileFormElement.addEventListener("submit", handleProfileFormSubmit);
 profileAddFormElement.addEventListener("submit", handleProfileFormAddSubmit);
 
+const addCardButton = profileAddPopup.querySelector(".popup__submit-btn");
+addCardButton.addEventListener("click", function () {
+  const cardName = cardNameInput.value;
+  const cardLink = cardLinkInput.value;
+
+  addCardToInitialCards(cardName, cardLink);
+  cardNameInput.value = "";
+  cardLinkInput.value = "";
+});
+
+function addCardToInitialCards(name, link) {
+  const newCard = {
+    name: name,
+    link: link,
+  };
+  renderCard(newCard, placesWrapper);
+}
+
+function deleteCard(cardElement) {
+  cardElement.remove();
+}
+
 const placesWrapper = document.querySelector(".cards__card");
 const cardTemplate = document
   .querySelector("#card-template")
   .content.querySelector(".cards__content");
+
+const renderCard = (data, wrap) => {
+  const cardElement = getCardElement(data);
+  wrap.appendChild(cardElement);
+};
 
 const getCardElement = (data) => {
   const cardElement = cardTemplate.cloneNode(true);
@@ -134,41 +157,9 @@ function openImagePopup(title, imageUrl) {
   openPopup(picPopup);
 }
 
-const renderCard = (data, wrap) => {
-  const cardItem = getCardElement(data);
-
-  wrap.appendChild(cardItem);
-};
-
 initialCards.forEach((cardObject) => {
   renderCard(cardObject, placesWrapper);
 });
 
-const addCardToInitialCards = (name, link) => {
-  const newCard = {
-    name: name,
-    link: link,
-  };
-  initialCards.push(newCard);
-  renderCard(newCard, placesWrapper);
-};
 
-const addCardButton = profileAddPopup.querySelector(".popup__submit-btn");
 
-function deleteCard(cardElement) {
-  const cardTitle = cardElement.querySelector(".cards__title").textContent;
-  const cardLink = cardElement
-    .querySelector(".card__image")
-    .style.backgroundImage.slice(4, -1)
-    .replace(/"/g, "");
-
-  const index = initialCards.findIndex((card) => {
-    return card.name === cardTitle && card.link === cardLink;
-  });
-
-  if (index > -1) {
-    initialCards.splice(index, 1);
-  }
-
-  cardElement.remove();
-}
