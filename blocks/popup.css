@@ -43,7 +43,7 @@
   cursor: pointer;
 }
 
-.close-button__img {
+.popup__close-button__img {
   width: 40px;
   height: 40px;
 }
