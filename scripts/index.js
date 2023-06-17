@@ -104,7 +104,7 @@ const getCardElement = (data) => {
      likeButton.classList.toggle("card__like-button_active");
   });
 
-  const deleteButton = cardElement.querySelector(".card__delete-button");
+  const deleteButton = cardElement.querySelector(".cards__delete-button");
   deleteButton.addEventListener("click", function (event) {
     event.stopPropagation();
     deleteCard(cardElement);
@@ -132,7 +132,7 @@ function openImagePopup(title, imageUrl){
 
 const renderCard = (data,wrap) => {
   const cardItem = getCardElement(data);
-  const deleteButton = cardItem.querySelector(".card__delete-button");
+  const deleteButton = cardItem.querySelector(".cards__delete-button");
   deleteButton.addEventListener("click", function () {
     deleteCard(cardItem);
   });
