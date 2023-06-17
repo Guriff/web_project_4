@@ -5,11 +5,8 @@ const profilePopup = document.querySelector(".popup_type_profile");
 const profileAddPopup = document.querySelector(".popup_type_add");
 const picPopup = document.querySelector(".popup_type_pic");
 
-
-
 const profileFormElement = document.querySelector(".popup__form_type_profile");
-const profileAddFormElement= document.querySelector(".popup__form_type_add");
-
+const profileAddFormElement = document.querySelector(".popup__form_type_add");
 
 const nameInput = document.querySelector(".popup__input_type_name");
 const titleInput = document.querySelector(".popup__input_type_title");
@@ -18,32 +15,31 @@ const cardLinkInput = document.querySelector(".popup__input_type_link");
 const profileName = document.querySelector(".profile__title");
 const profileTitle = document.querySelector(".profile__subtitle");
 
-
 const initialCards = [
   {
     name: "Yosemite Valley",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_yosemite.jpg"
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_yosemite.jpg",
   },
   {
     name: "Lake Louise",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_lake-louise.jpg"
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_lake-louise.jpg",
   },
   {
     name: "Bald Mountains",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_bald-mountains.jpg"
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_bald-mountains.jpg",
   },
   {
     name: "Latemar",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_latemar.jpg"
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_latemar.jpg",
   },
   {
     name: "Vanoise National Park",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_vanoise.jpg"
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_vanoise.jpg",
   },
   {
     name: "Lago di Braies",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_lago.jpg"
-  }
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_lago.jpg",
+  },
 ];
 
 function openPopup(popup) {
@@ -64,9 +60,7 @@ profileAddButton.addEventListener("click", function () {
   openPopup(profileAddPopup);
 });
 
-
-
-const picCloseButton = document.querySelector(".popup_type_pic .popup__close");
+const picCloseButton = picPopup.querySelector(".popup_type_pic .popup__close");
 
 picCloseButton.addEventListener("click", function () {
   closePopup(picPopup);
@@ -76,32 +70,44 @@ function handleProfileFormSubmit(evt) {
   evt.preventDefault();
   profileName.textContent = nameInput.value;
   profileTitle.textContent = titleInput.value;
+
+  
   closePopup(profilePopup);
 }
 
 function handleProfileFormAddSubmit(evt) {
   evt.preventDefault();
+
+  profileAddFormElement.reset();
+  addCardButton.addEventListener("click", function () {
+    const cardName = cardNameInput.value;
+    const cardLink = cardLinkInput.value;
+
+    addCardToInitialCards(cardName, cardLink);
+    cardNameInput.value = "";
+    cardLinkInput.value = "";
+  });
   closePopup(profileAddPopup);
 }
 
 profileFormElement.addEventListener("submit", handleProfileFormSubmit);
-profileAddFormElement.addEventListener("submit",handleProfileFormAddSubmit);
+profileAddFormElement.addEventListener("submit", handleProfileFormAddSubmit);
 
 const placesWrapper = document.querySelector(".cards__card");
-const cardTemplate = document.querySelector("#card-template").content.querySelector(".cards__content")
+const cardTemplate = document
+  .querySelector("#card-template")
+  .content.querySelector(".cards__content");
 
 const getCardElement = (data) => {
   const cardElement = cardTemplate.cloneNode(true);
   const likeButton = cardElement.querySelector(".card__like-button");
-  const cardImages = cardElement.querySelector(".cards__image");
+  const cardImage = cardElement.querySelector(".card__image");
   const cardTitle = cardElement.querySelector(".cards__title");
-  cardImages.style.backgroundImage ="url(" + data.link + ")";
-  cardTitle.innerHTML = data.name;
+  cardImage.style.backgroundImage = "url(" + data.link + ")";
+  cardTitle.textContent = data.name;
 
-
-  
   likeButton.addEventListener("click", function () {
-     likeButton.classList.toggle("card__like-button_active");
+    likeButton.classList.toggle("card__like-button_active");
   });
 
   const deleteButton = cardElement.querySelector(".cards__delete-button");
@@ -110,44 +116,38 @@ const getCardElement = (data) => {
     deleteCard(cardElement);
   });
 
-
-  cardImages.addEventListener('click', () =>
-openImagePopup(data.name, data.link));
+  cardImage.addEventListener("click", () =>
+    openImagePopup(data.name, data.link)
+  );
 
   return cardElement;
 };
 
-function openImagePopup(title, imageUrl){
+function openImagePopup(title, imageUrl) {
   const picImage = document.querySelector(".popup__pic-image");
   const popupPicTitle = document.querySelector(".popup__pic-title");
-  
-  popupPicTitle.textContent = title;
-  picImage.src =imageUrl;
-  
-  openPopup(picPopup);
-  
-  
-  
-  };
 
-const renderCard = (data,wrap) => {
+  popupPicTitle.textContent = title;
+  picImage.src = imageUrl;
+  picImage.alt = `Photo of ${title}`;
+
+  openPopup(picPopup);
+}
+
+const renderCard = (data, wrap) => {
   const cardItem = getCardElement(data);
-  const deleteButton = cardItem.querySelector(".cards__delete-button");
-  deleteButton.addEventListener("click", function () {
-    deleteCard(cardItem);
-  });
 
   wrap.appendChild(cardItem);
 };
 
 initialCards.forEach((cardObject) => {
- renderCard(cardObject, placesWrapper);
+  renderCard(cardObject, placesWrapper);
 });
 
 const addCardToInitialCards = (name, link) => {
   const newCard = {
     name: name,
-    link: link
+    link: link,
   };
   initialCards.push(newCard);
   renderCard(newCard, placesWrapper);
@@ -155,15 +155,12 @@ const addCardToInitialCards = (name, link) => {
 
 const addCardButton = profileAddPopup.querySelector(".popup__submit-btn");
 
-addCardButton.addEventListener("click", function () {
-  const cardName = cardNameInput.value;
-  const cardLink = cardLinkInput.value;
-  addCardToInitialCards(cardName, cardLink);
-});
-
 function deleteCard(cardElement) {
   const cardTitle = cardElement.querySelector(".cards__title").textContent;
-  const cardLink = cardElement.querySelector(".cards__image").style.backgroundImage.slice(4, -1).replace(/"/g, "");
+  const cardLink = cardElement
+    .querySelector(".card__image")
+    .style.backgroundImage.slice(4, -1)
+    .replace(/"/g, "");
 
   const index = initialCards.findIndex((card) => {
     return card.name === cardTitle && card.link === cardLink;
@@ -174,9 +171,4 @@ function deleteCard(cardElement) {
   }
 
   cardElement.remove();
-};
-
-
-
-
-
+}

@@ -12,11 +12,13 @@
   transition: opacity 0.6s;
   opacity: 0;
   visibility: hidden;
+  transition: visibility 0s 0.5s, opacity 0.5s linear;
 }
 
 .popup_opened {
   opacity: 1;
   visibility: visible;
+  transition: visibility 0s, opacity 0.5s linear;
 }
 
 .popup__content {
@@ -27,12 +29,17 @@
   border-radius: 10px;
   position: relative;
 }
-
+.popup__close {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  border: none;
+}
 .popup__close-img {
   position: absolute;
-  top: -45px;
-  right: -45px;
-  background-color: rgba(0, 0, 0, 0.0);
+  top: -18px;
+  right: -18px;
+  background-color: rgba(0, 0, 0, 0);
   margin: 0;
   padding: 0;
   border: none;
@@ -43,9 +50,14 @@
   cursor: pointer;
 }
 
-.close__button-img {
-  width: 40px;
-  height: 40px;
+.popup__close-img_pic {
+  position: absolute;
+  top: -35px;
+  right: -35px;
+  background-color: rgba(0, 0, 0, 0);
+  margin: 0;
+  padding: 0;
+  border: none;
 }
 
 .popup__input {
@@ -63,7 +75,7 @@
 }
 
 .popup__form-title {
-  width: 330px;
+  width: auto;
   margin: 0;
   font-family: "inter", "Arial";
   font-style: normal;
@@ -116,9 +128,6 @@
   padding: 0;
 }
 
-
-
-
 .popup__pic-image {
   width: 100%;
   height: 100%;
@@ -127,7 +136,7 @@
 
 .popup__pic-title {
   position: absolute;
-  font-family: "Inter";
+  font-family: "Inter", Arial, sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 12px;
@@ -137,12 +146,9 @@
 
 @media screen and (max-width: 500px) {
   .popup__pic-content {
-    
     max-width: calc(100% - 38px);
-   
   }
 }
-
 
 @media screen and (max-width: 450px) {
   .popup {
@@ -154,8 +160,6 @@
     margin-right: 19px;
     padding: 25px;
   }
-
-
 
   .popup__close {
     right: 0px;
@@ -199,5 +203,3 @@
     max-height: 600px;
   }
 }
-
-

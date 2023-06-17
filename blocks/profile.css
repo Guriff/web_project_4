@@ -56,15 +56,11 @@
   margin-left: 18px;
   background-color: rgba(0, 0, 0, 0);
   border: 1px solid #fff;
-  
-  
 }
 
 .profile__edit-button:hover {
   opacity: 0.6;
   cursor: pointer;
-  
-  
 }
 .profile__button-add {
   width: 150px;
@@ -82,7 +78,7 @@
   border-radius: 2px;
 }
 
-.profile__button_add:hover {
+.profile__button-add:hover {
   opacity: 0.6;
   cursor: pointer;
 }
@@ -100,7 +96,7 @@
     margin-bottom: 36px;
     max-width: 250px;
   }
-  .profile__button_add {
+  .profile__button-add {
     width: 100%;
     margin: 0;
   }
