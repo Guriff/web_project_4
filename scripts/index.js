@@ -41,6 +41,7 @@ const initialCards = [
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_lago.jpg",
   },
 ];
+initialCards.reverse().forEach;
 
 function openPopup(popup) {
   popup.classList.add("popup_opened");
@@ -69,7 +70,7 @@ picCloseButton.addEventListener("click", function () {
 
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
-  
+
   profileName.textContent = nameInput.value;
   profileTitle.textContent = titleInput.value;
 
@@ -80,32 +81,31 @@ function handleProfileFormAddSubmit(evt) {
   evt.preventDefault();
 
   const cardName = cardNameInput.value;
-  const cardLink = cardLinkInput.value;
+    const cardLink = cardLinkInput.value;
 
- 
-  closePopup(profileAddPopup);
+    if (cardName && cardLink) {
+    renderCard({ name: cardName, link: cardLink }, placesWrapper);
+    cardNameInput.value = "";
+    cardLinkInput.value = "";
+    }
+  
+    closePopup(profileAddPopup);
+
 }
 
-profileFormElement.addEventListener("submit", handleProfileFormSubmit);
 profileAddFormElement.addEventListener("submit", handleProfileFormAddSubmit);
 
-const addCardButton = profileAddPopup.querySelector(".popup__submit-btn");
-addCardButton.addEventListener("click", function () {
-  const cardName = cardNameInput.value;
-  const cardLink = cardLinkInput.value;
+  const addCardButton = profileAddPopup.querySelector(".popup__submit-btn");
+  addCardButton.addEventListener("click", function (evt) {
+    evt.preventDefault(); 
+    profileAddFormElement.dispatchEvent(new Event('submit')); 
+  
+  
+  });
 
-  addCardToInitialCards(cardName, cardLink);
-  cardNameInput.value = "";
-  cardLinkInput.value = "";
-});
 
-function addCardToInitialCards(name, link) {
-  const newCard = {
-    name: name,
-    link: link,
-  };
-  renderCard(newCard, placesWrapper);
-}
+profileFormElement.addEventListener("submit", handleProfileFormSubmit);
+
 
 function deleteCard(cardElement) {
   cardElement.remove();
@@ -118,10 +118,10 @@ const cardTemplate = document
 
 const renderCard = (data, wrap) => {
   const cardElement = getCardElement(data);
-  wrap.appendChild(cardElement);
+  wrap.prepend(cardElement);
 };
 
-const getCardElement = (data) => {
+function getCardElement(data) {
   const cardElement = cardTemplate.cloneNode(true);
   const likeButton = cardElement.querySelector(".card__like-button");
   const cardImage = cardElement.querySelector(".card__image");
@@ -144,7 +144,7 @@ const getCardElement = (data) => {
   );
 
   return cardElement;
-};
+}
 
 function openImagePopup(title, imageUrl) {
   const picImage = document.querySelector(".popup__pic-image");
@@ -160,6 +160,3 @@ function openImagePopup(title, imageUrl) {
 initialCards.forEach((cardObject) => {
   renderCard(cardObject, placesWrapper);
 });
-
-
-
