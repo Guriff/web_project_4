@@ -81,31 +81,22 @@ function handleProfileFormAddSubmit(evt) {
   evt.preventDefault();
 
   const cardName = cardNameInput.value;
-    const cardLink = cardLinkInput.value;
+  const cardLink = cardLinkInput.value;
 
-    if (cardName && cardLink) {
+  if (cardName && cardLink) {
     renderCard({ name: cardName, link: cardLink }, placesWrapper);
     cardNameInput.value = "";
     cardLinkInput.value = "";
-    }
-  
-    closePopup(profileAddPopup);
+  }
 
+  closePopup(profileAddPopup);
 }
 
 profileAddFormElement.addEventListener("submit", handleProfileFormAddSubmit);
 
-  const addCardButton = profileAddPopup.querySelector(".popup__submit-btn");
-  addCardButton.addEventListener("click", function (evt) {
-    evt.preventDefault(); 
-    profileAddFormElement.dispatchEvent(new Event('submit')); 
-  
-  
-  });
 
 
 profileFormElement.addEventListener("submit", handleProfileFormSubmit);
-
 
 function deleteCard(cardElement) {
   cardElement.remove();
