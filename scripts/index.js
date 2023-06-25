@@ -94,8 +94,6 @@ function handleProfileFormAddSubmit(evt) {
 
 profileAddFormElement.addEventListener("submit", handleProfileFormAddSubmit);
 
-
-
 profileFormElement.addEventListener("submit", handleProfileFormSubmit);
 
 function deleteCard(cardElement) {
@@ -151,3 +149,24 @@ function openImagePopup(title, imageUrl) {
 initialCards.forEach((cardObject) => {
   renderCard(cardObject, placesWrapper);
 });
+
+const popups = document.querySelectorAll(".popup");
+
+popups.forEach((popup) => {
+  popup.addEventListener("click", function (event) {
+    if (event.target === event.currentTarget) {
+      closePopup(popup);
+    }
+  });
+});
+
+function closePopupOnEsc(event) {
+  if (event.key === "Escape") {
+    const openPopup = document.querySelector(".popup_opened");
+    if (openPopup) {
+      closePopup(openPopup);
+    }
+  }
+}
+
+document.addEventListener("keydown", closePopupOnEsc);
