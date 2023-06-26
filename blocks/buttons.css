@@ -1,9 +1,7 @@
-
-.card__like-button{
+.card__like-button {
   background-color: rgba(0, 0, 0, 0);
   border: none;
   padding: 0;
-  
 }
 .card__like-button:hover {
   border: #000000;
@@ -11,20 +9,13 @@
   cursor: pointer;
 }
 
-
-.card__like-button_active{
+.card__like-button_active {
   background-image: url("../images/Union.svg");
   transition: opacity 0.3s;
   background-repeat: no-repeat;
   background-position: center;
   padding-top: 7px;
-
-
-
 }
-
-
-
 
 .cards__delete-button {
   position: absolute;
@@ -32,15 +23,11 @@
   top: 5px;
   right: 5px;
   padding: 0;
-  border:none;
-  
-
+  border: none;
 }
 
 .cards__delete-button:hover {
-    border: #000000;
+  border: #000000;
   opacity: 0.5;
   cursor: pointer;
-
-
 }
