@@ -1,5 +1,37 @@
-function enableValidation(props) {
-  const formElement = document.querySelector(props.formSelector);
+function showError(inputElement, errorElement, errorMessage, props) {
+  inputElement.classList.add(props.inputErrorClass);
+  errorElement.textContent = errorMessage;
+  errorElement.classList.add(props.errorClass);
+}
+
+function hideError(inputElement, errorElement, props) {
+  inputElement.classList.remove(props.inputErrorClass);
+  errorElement.textContent = "";
+  errorElement.classList.remove(props.errorClass);
+}
+
+function checkInputValidity(inputElement, errorElement, props) {
+  if (!inputElement.validity.valid) {
+    showError(inputElement, errorElement, inputElement.validationMessage, props);
+  } else {
+    hideError(inputElement, errorElement, props);
+  }
+}
+
+function toggleButtonState(formElement, submitButtonElement, inputElements, props) {
+  const isValid = inputElements.every(
+    (inputElement) => inputElement.validity.valid
+  );
+  submitButtonElement.disabled = !isValid;
+  submitButtonElement.classList.toggle(props.inactiveButtonClass, !isValid);
+}
+
+function resetForm(formElement, submitButtonElement, inputElements, props) {
+  formElement.reset();
+  toggleButtonState(formElement, submitButtonElement, inputElements, props);
+}
+
+function setEventListeners(formElement, props) {
   const inputElements = Array.from(
     formElement.querySelectorAll(props.inputSelector)
   );
@@ -7,56 +39,32 @@ function enableValidation(props) {
     props.submitButtonSelector
   );
 
-  function showError(inputElement) {
+  function handleFormSubmit(evt) {
+    evt.preventDefault();
+  }
+
+  function handleInputChange(evt) {
+    const inputElement = evt.target;
     const errorElement = inputElement.nextElementSibling;
-    inputElement.classList.add(props.inputErrorClass);
-    errorElement.textContent = inputElement.validationMessage;
-    errorElement.classList.add(props.errorClass);
-  }
-  
-  function hideError(inputElement) {
-    const errorElement = inputElement.nextElementSibling;
-    inputElement.classList.remove(props.inputErrorClass);
-    errorElement.textContent = "";
-    errorElement.classList.remove(props.errorClass);
+    checkInputValidity(inputElement, errorElement, props);
+    toggleButtonState(formElement, submitButtonElement, inputElements, props);
   }
 
-  function checkInputValidity(inputElement) {
-    if (!inputElement.validity.valid) {
-      showError(inputElement);
-    } else {
-      hideError(inputElement);
-    }
-  }
+  inputElements.forEach((inputElement) => {
+    inputElement.addEventListener("input", handleInputChange);
+  });
 
-  function toggleButtonState() {
-    const isValid = inputElements.every(
-      (inputElement) => inputElement.validity.valid
-    );
-    if (isValid) {
-      submitButtonElement.disabled = false;
-      submitButtonElement.classList.remove(props.inactiveButtonClass);
-    } else {
-      submitButtonElement.disabled = true;
-      submitButtonElement.classList.add(props.inactiveButtonClass);
-    }
-  }
+  formElement.addEventListener("submit", handleFormSubmit);
 
-  function setEventListeners() {
-    inputElements.forEach((inputElement) => {
-      inputElement.addEventListener("input", function () {
-        checkInputValidity(inputElement);
-        toggleButtonState();
-      });
-    });
+  resetForm(formElement, submitButtonElement, inputElements, props);
+}
 
-    formElement.addEventListener("submit", function (evt) {
-        evt.preventDefault();
-      });
-      toggleButtonState();
-  }
+function enableValidation(props) {
+  const formElements = document.querySelectorAll(props.formSelector);
 
-  setEventListeners();
+  formElements.forEach((formElement) => {
+    setEventListeners(formElement, props);
+  });
 }
 
 enableValidation({
@@ -67,14 +75,3 @@ enableValidation({
   inputErrorClass: "popup__input_type_error",
   errorClass: "popup__error_visible",
 });
-
-enableValidation({
-    formSelector: ".popup__form_type_add",
-    inputSelector: ".popup__input",
-    submitButtonSelector: ".popup__submit-btn",
-    inactiveButtonClass: "popup__button_disabled",
-    inputErrorClass: "popup__input_type_error",
-    errorClass: "popup__error_visible",
-  });
-
-  

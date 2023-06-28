@@ -64,7 +64,6 @@
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
-  
 }
 
 .popup__form-title {
@@ -150,11 +149,12 @@
   font-size: 12px;
   font-family: Inter;
   margin-bottom: 30px;
-  
+  visibility: hidden; 
 }
 
 .popup__error_visible {
   display: inline-block;
+  visibility: visible; 
 }
 
 .popup__button_disabled {

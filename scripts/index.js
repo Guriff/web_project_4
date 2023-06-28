@@ -41,7 +41,7 @@ const initialCards = [
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_lago.jpg",
   },
 ];
-initialCards.reverse().forEach;
+
 
 function openPopup(popup) {
   popup.classList.add("popup_opened");
@@ -80,13 +80,11 @@ function handleProfileFormSubmit(evt) {
 function handleProfileFormAddSubmit(evt) {
   evt.preventDefault();
 
-  const cardName = cardNameInput.value;
-  const cardLink = cardLinkInput.value;
+  const formData = new FormData(profileAddFormElement);
 
-  if (cardName && cardLink) {
-    renderCard({ name: cardName, link: cardLink }, placesWrapper);
-    cardNameInput.value = "";
-    cardLinkInput.value = "";
+  if (formData.get('placeName') && formData.get('imageUrl')) {
+    renderCard({ name: formData.get('placeName'), link: formData.get('imageUrl') }, placesWrapper);
+    profileAddFormElement.reset();
   }
 
   closePopup(profileAddPopup);
@@ -107,7 +105,7 @@ const cardTemplate = document
 
 const renderCard = (data, wrap) => {
   const cardElement = getCardElement(data);
-  wrap.prepend(cardElement);
+  wrap.appendChild(cardElement);
 };
 
 function getCardElement(data) {
@@ -153,9 +151,9 @@ initialCards.forEach((cardObject) => {
 const popups = document.querySelectorAll(".popup");
 
 popups.forEach((popup) => {
-  popup.addEventListener("click", function (event) {
+  popup.addEventListener("mousedown", function (event) {
     if (event.target === event.currentTarget) {
-      closePopup(popup);
+      closePopup(event.target);
     }
   });
 });
